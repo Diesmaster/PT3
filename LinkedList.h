@@ -85,6 +85,13 @@ class LinkedList{
 
     LinkedList(std::string input){
         std::ifstream fin(input);
+        while(!fin){
+            std::cout << std::endl <<"File not found!" << std::endl;
+            std::cout << std::endl <<"Enter file name: " << std::endl;
+            input.clear();
+            std::cin >> input;
+            fin.open(input);
+        }
         char base;
         bool end = false;
         fin.get(base);

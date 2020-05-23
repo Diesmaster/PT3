@@ -39,7 +39,6 @@ class ArrayInt{
         numberBases = seqnumberBases + numberBases;
         elemInArray = totElem;
         array = new T [totElem];
-        std::cout << "created" << std::endl;
     }
 
     ArrayInt(int start, int end){
@@ -90,6 +89,13 @@ class ArrayInt{
 
     ArrayInt(std::string input){
         std::ifstream fin(input);
+        while(!fin){
+            std::cout << std::endl <<"File not found!" << std::endl;
+            std::cout << std::endl <<"Enter file name: " << std::endl;
+            input.clear();
+            std::cin >> input;
+            fin.open(input);
+        }
         std::string stringInFile;
         fin >> stringInFile;
 
@@ -100,7 +106,6 @@ class ArrayInt{
         else{size = size / intsize;}
 
         array = new T [size+1];
-        std::cout << "created" << std::endl;
         elemInArray = size;
 
         fillArray(input);

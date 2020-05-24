@@ -59,20 +59,18 @@ private:
 		else if ((start > DNA->length()) || (einde > DNA->length())) {
 			return "parameters are wrong, they will result in an array out of bound";
 		}else if(start == 0){
-			//ArrayInt<T> sequentie(seq, true);
-			//ArrayInt<T> total = sequentie.concat(*DNA);
-			//delete DNA;
-			//DNA = new ArrayInt<T>(total);
+			ArrayInt<T> sequentie(seq, true);
+			ArrayInt<T> TweedeDeel = DNA->slice(1, DNA->length());
+			ArrayInt<T> total = sequentie.concat(TweedeDeel);
+			delete DNA;
+			DNA = new ArrayInt<T>(total);
 		}
 		else {
 			ArrayInt<T> Eerstehelft = DNA->slice(0, start-1);
 			ArrayInt<T> Tweedehelft = DNA->slice(start, DNA->length() );
 
 			ArrayInt<T> sequentie(seq, true);
-			cout << "sequentie: " << sequentie.length() << endl;
-			for (int x = 0; x < sequentie.length(); x++) {
-				cout << sequentie.at(x);
-			}
+			
 			cout << endl;
 			ArrayInt<T> stap1 = Eerstehelft.concat(sequentie);
 			ArrayInt<T> total = stap1.concat(Tweedehelft);

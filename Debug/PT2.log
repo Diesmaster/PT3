@@ -1,20 +1,38 @@
 ﻿  PT2.cpp
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(101,11): warning C4018: '>': signed/unsigned mismatch
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message : while compiling class template member function 'LinkedList<T>::LinkedList(std::string,bool)'
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :         with
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :         [
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(58): message : see reference to function template instantiation 'LinkedList<T>::LinkedList(std::string,bool)' being compiled
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(58): message :         with
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(58): message :         [
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(58): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(58): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(53): message : see reference to class template instantiation 'LinkedList<T>' being compiled
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(53): message :         with
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(53): message :         [
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(53): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(53): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(52): message : while compiling class template member function 'std::string LinkedListVariente<uint8_t>::subtitutie(int,int,std::string)'
+C:\Users\chris\source\repos\PT2\PT2\PT2.cpp(65): message : see reference to class template instantiation 'LinkedListVariente<uint8_t>' being compiled
 C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(97,11): warning C4018: '>': signed/unsigned mismatch
 C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(87): message : while compiling class template member function 'void ArrayInt<T>::fillArrayString(std::string &)'
 C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(87): message :         with
 C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(87): message :         [
 C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(87): message :             T=uint8_t
 C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(87): message :         ]
-C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(133): message : see reference to function template instantiation 'void ArrayInt<T>::fillArrayString(std::string &)' being compiled
-C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(133): message :         with
-C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(133): message :         [
-C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(133): message :             T=uint8_t
-C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(133): message :         ]
-C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(171): message : see reference to class template instantiation 'ArrayInt<T>' being compiled
-C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(171): message :         with
-C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(171): message :         [
-C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(171): message :             T=uint8_t
-C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(171): message :         ]
-C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(167): message : while compiling class template member function 'std::string ArrayIntVariente<uint8_t>::inversie(int,int)'
-C:\Users\chris\source\repos\PT2\PT2\PT2.cpp(84): message : see reference to class template instantiation 'ArrayIntVariente<uint8_t>' being compiled
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(131): message : see reference to function template instantiation 'void ArrayInt<T>::fillArrayString(std::string &)' being compiled
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(131): message :         with
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(131): message :         [
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(131): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(131): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(169): message : see reference to class template instantiation 'ArrayInt<T>' being compiled
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(169): message :         with
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(169): message :         [
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(169): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(169): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(165): message : while compiling class template member function 'std::string ArrayIntVariente<uint8_t>::inversie(int,int)'
+C:\Users\chris\source\repos\PT2\PT2\PT2.cpp(90): message : see reference to class template instantiation 'ArrayIntVariente<uint8_t>' being compiled
   PT2.vcxproj -> C:\Users\chris\source\repos\PT2\Debug\PT2.exe

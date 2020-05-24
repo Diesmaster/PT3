@@ -79,6 +79,42 @@ public:
 	object* front = nullptr;
 	object* end = nullptr;
 
+	LinkedList(const LinkedList& other) {
+		numberBases = other.numberBases;
+		object* help = other.front;
+		while (help) {
+			add_back(help->number);
+			help = help->next;
+		}
+	}
+
+	LinkedList(std::string input, bool bigPeen) {
+		//std::ifstream fin(input);
+		char base = input[0];
+		int x = 1;
+		bool end = false;
+		//fin.get(base);
+
+		while (!end) {
+			T number = 0;
+			for (int i = 0; i < intsize; ++i) {
+				if (x > input.length()) {
+					number <<= 2;
+					//fin.get(base);
+					x++;
+					end = true;
+					continue;
+				}
+				leftShift(number, base);
+				numberBases++;
+				base = input[x];
+				x++;
+			}
+			add_back(number);
+		}
+	}
+
+
 	LinkedList(std::string input) {
 		std::ifstream fin(input);
 		char base;

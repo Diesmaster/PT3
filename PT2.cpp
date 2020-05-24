@@ -62,17 +62,23 @@ int main() {
 		switch (groote) {
 		case 8:
 		{
-			LinkedListVariente<uint8_t> oeps;
+			LinkedListVariente<uint8_t>* oeps = new LinkedListVariente<uint8_t>();
+			oeps->read(input);
+			startProgram(oeps);
 		}
 		break;
 		case 16:
 		{
-			LinkedListVariente<uint16_t> oeps2;
+			LinkedListVariente<uint16_t>* oeps2 = new LinkedListVariente<uint16_t>();
+			oeps2->read(input);
+			startProgram(oeps2);
 		}
 		break;
 		case 32:
 		{
-			LinkedListVariente<uint32_t> oeps3;
+			LinkedListVariente<uint32_t>* oeps3 = new LinkedListVariente<uint32_t>();
+			oeps3->read(input);
+			startProgram(oeps3);
 		}
 		break;
 		}

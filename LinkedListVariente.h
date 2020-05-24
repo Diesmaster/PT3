@@ -10,7 +10,16 @@ template<typename T>
 class LinkedListVariente: public VariantInterface {
 public:
 
+	LinkedListVariente() {
+
+	}
+
+	~LinkedListVariente() {
+		delete DNA;
+	}
+
 	void read(string input) override {
+		DNA = new LinkedList<T>(input);
 		return;
 	}
 	
@@ -19,23 +28,25 @@ public:
 	}
 	
 	string opdracht(int start, int einde, string optie, string seq = "") override {
-		/*switch (optie) {
-		case ">":
+		if (optie == ">") {
 			subtitutie(start, einde, seq);
-			break;
-		case "ins":
+		}
+		else if (optie == "ins") {
 			incerties(start, einde, seq);
-			break;
-		case "del":
+		}
+		else if (optie == "del") {
 			delitie(start, einde);
-			break;
-		case "delins":
+		}
+		else if (optie == "delins") {
 			delitieIncertie(start, einde, seq);
-			break;
-		case "inv":
+		}
+		else if (optie == "inv") {
 			inversie(start, einde);
-			break;
-		}*/
+		}
+		else {
+			return "dit is geen bestaande naam";
+		}
+
 		return "success";
 	}
 
@@ -43,8 +54,24 @@ private:
 	LinkedList<T>* DNA;
 
 	string subtitutie(int start, int einde, string seq) override {
+		LinkedList<T> eerstedeel = DNA->slice(0, start);
+		LinkedList<T> tweededeel = DNA->slice(start, DNA->length());
+
+		//LinkedList<T> total = eerstedeel.concat(tweededeel);
+		
+		LinkedList<T> total(seq, true);
+		delete DNA;
+		DNA = new LinkedList<T>(total);
+
+		cout << "eerstehelft concat sequentie: " << DNA->length() << endl;
+		for (int x = 0; x < DNA->length(); x++) {
+			cout << DNA->at(x);
+		}
+		cout << endl;
+
 		return "";
 	}
+
 	string delitie(int start, int einde) override {
 		return "";
 	}

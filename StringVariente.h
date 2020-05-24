@@ -4,11 +4,9 @@
 #include <bitset>
 #include "DNAstring.h"
 
+
 class StringVariente : public VariantInterface {
 public:
-	~StringVariente() {
-		delete DNA;
-	}
 
 	void read(string input) override {
 		DNA = new DNAstring(input, true);
@@ -40,6 +38,10 @@ public:
 		}
 
 		return "success";
+	}
+
+	~StringVariente() {
+		delete DNA;
 	}
 
 private:

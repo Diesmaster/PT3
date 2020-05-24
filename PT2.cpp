@@ -2,7 +2,7 @@
 #include <string>
 #include <bitset>
 
-#include "ArrayInt.h"
+//#include "ArrayInt.h"
 #include "LinkedList.h"
 #include "DNAstring.h"
 
@@ -39,6 +39,7 @@ bool startProgram(VariantInterface* ptr) {
 
 
 int main() {
+
 	int keuze = -1;
 	while ((keuze != 1) && (keuze != 2)) {
 		cout << "Wilt u het opslaan in een array(1), of in een pointerlijst(2), of een string(3)?" << endl;

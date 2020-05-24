@@ -1,9 +1,12 @@
 #pragma once
 
 #include <iostream>
+#include <cstdint>
+#include <fstream>
 #include <string>
 #include <bitset>
-//#include "ArrayInt.h"
+#include "ArrayInt.h"
+
 
 
 template<typename T> 
@@ -11,11 +14,12 @@ class ArrayIntVariente : public VariantInterface {
 public:
 	
 	~ArrayIntVariente() {
+		//std::cerr << "stonks" << endl;
 		delete DNA;
 	}
 	
 	ArrayIntVariente() {
-	
+		
 	}
 
 
@@ -49,7 +53,7 @@ public:
 
 private:
 
-	ArrayInt<T>* DNA = NULL;
+	ArrayInt<T>* DNA;
 
 	string subtitutie(int start, int einde, string seq) override {
 

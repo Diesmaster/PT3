@@ -80,14 +80,15 @@ private:
 			delete DNA;
 			DNA = new LinkedList<T>(total);
 
-			cout << "sub: " << DNA->length() << endl;
-			for (int x = 0; x < DNA->length(); x++) {
-				cout << DNA->at(x);
-			}
-			cout << endl;
-
-			return "success";
 		}
+		cout << "sub: " << DNA->length() << endl;
+		for (int x = 0; x < DNA->length(); x++) {
+			cout << DNA->at(x);
+		}
+		cout << endl;
+
+		return "success";
+
 	}
 
 	string delitie(int start, int einde) override {

@@ -1,6 +1,13 @@
 #pragma once
 
+#include <iostream>
+#include <cstdint>
+#include <fstream>
 #include <string>
+#include <bitset>
+
+
+
 
 using namespace std;
 

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #pragma once
 #include <iostream>
 #include <cstdint>
@@ -147,6 +147,9 @@ public:
 		if (freespace != 0) {
 			for (int i = 0; i < freespace; ++i) {
 				char base = seq.at(i);
+				if (base == ' ') {
+					number <<= 2;
+				}
 				leftShift(number, base);
 			}
 			concseq.end->number = number;

@@ -158,6 +158,7 @@
     <ClInclude Include="DNAstring.h" />
     <ClInclude Include="ArrayInt.h" />
     <ClInclude Include="ArrayIntVariente.h" />
+    <ClInclude Include="StringVariente.h" />
     <ClInclude Include="LinkedListVariente.h" />
     <ClInclude Include="VarianteInterface.h" />
     <ClInclude Include="LinkedList.h" />

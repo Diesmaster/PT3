@@ -9,6 +9,7 @@
 
 #include "LinkedListVariente.h"
 #include "ArrayIntVariente.h"
+#include "StringVariente.h"
 
 
 string manipulatie(VariantInterface* ptr) {
@@ -39,8 +40,8 @@ bool startProgram(VariantInterface* ptr) {
 int main() {
 	int keuze = -1;
 	while ((keuze != 1) && (keuze != 2)) {
-		cout << "Wilt u het opslaan in een array(1), of in een pointerlijst(2)?" << endl;
-		cout << "druk op 1 of 2 respectivelijk" << endl;
+		cout << "Wilt u het opslaan in een array(1), of in een pointerlijst(2), of een string(3)?" << endl;
+		cout << "druk op 1 of 2 of 3 respectivelijk" << endl;
 		cin >> keuze;
 	}
 	int groote = -1;
@@ -76,7 +77,7 @@ int main() {
 		break;
 		}
 	}
-	else {
+	else if(keuze == 1){
 		switch (groote) {
 		case 8:
 		{
@@ -100,6 +101,8 @@ int main() {
 		}
 		break;
 		}
+	}else {
+		StringVariente(input);
 	}
 	return 0;
 }

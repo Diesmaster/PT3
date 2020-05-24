@@ -1,10 +1,12 @@
-<<<<<<< HEAD
+
+
 #include <iostream>
 #include <cstdint>
 #include <fstream>
 #include <string>
+#include <bitset>
 
-template < typename T >
+template <typename T>
 class ArrayInt {
 	T* array;
 	int numberBases = 0;
@@ -36,16 +38,20 @@ class ArrayInt {
 		}
 	}
 
+	ArrayInt(int numberBases, int seqnumberBases, int totElem) {
+		this->numberBases = seqnumberBases + numberBases;
+		elemInArray = totElem;
+		array = new T[totElem];
+	}
+
 	ArrayInt(int start, int end) {
 		int size = end - start;
 		numberBases = size;
 
 		if (size % intsize != 0) {
 			size = (size / intsize) + 1;
-			std::cout << size << std::endl;
 		}
 		else { size = size / intsize; }
-		std::cout << size << std::endl;
 		array = new T[size];
 		elemInArray = size;
 	}
@@ -56,7 +62,7 @@ class ArrayInt {
 		elemInArray = 0;
 	}
 
-	bool isValidInput(int start, int end) {
+	bool isValidInput(int start, int end) const {
 		if (start < 0 || start > numberBases || end < 0 || end > numberBases || end < start || start == end) {
 			return false;
 		}
@@ -78,33 +84,59 @@ class ArrayInt {
 		}
 	}
 
-	void fillArrayString(std::string PassedString) {
+	void fillArrayString(std::string &PassedString) {
 		//std::ifstream fin(input);
 		char kar;
 		kar = PassedString[0];
 		int pos = 0;
-		for (int x = 1; x < PassedString.length(); x++) {
+		int x = 1;
+		bool end = false;
+		while (!end) {
 			T number = 0;
-			for (int i = 0; i < intsize; i++) {
+			for (int i = 0; i < intsize; ++i) {
+				if (x > PassedString.length()) {
+					number <<= 2;
+				
+					x++;
+					end = true;
+					continue;
+				}
 				leftShift(number, kar);
 				numberBases++;
+				
 				kar = PassedString[x];
+				x++;
 			}
 			array[pos] = number;
+			
 			pos++;
 		}
 	}
 
-
 public:
+	ArrayInt(std::string &stringpassed, bool dikkelul) {
 
-	ArrayInt(int numberBases, int seqnumberBases, int totElem) {
-		this->numberBases = seqnumberBases + numberBases;
-		elemInArray = totElem;
-		array = new T[totElem];
+		size_t size = stringpassed.size();
+
+		if (size % intsize != 0) {
+			size = (size / intsize) + 1;
+		}
+		else { size = size / intsize; }
+
+		array = new T[size + 1];
+		elemInArray = size;
+
+		
+
+		fillArrayString(stringpassed);
+	}
+
+	~ArrayInt() {
+		delete[] array;
 	}
 
 	ArrayInt(const ArrayInt& object) {
+		std::cout << "ik copy " << object.elemInArray << " " << object.numberBases;
 		if (&object == this) return;
 		numberBases = object.numberBases;
 		array = new T[object.elemInArray];
@@ -114,25 +146,16 @@ public:
 		}
 
 	}
-	
-	ArrayInt(std::string stringpassed, bool dikkelul) {
-
-		size_t size = stringpassed.size();
-
-		if (size % intsize != 0) {
-			size = (size / intsize) + 1;
-		}
-		else { size = size / intsize; }
-
-		array = new T[size];
-		elemInArray = size;
-
-		fillArrayString(stringpassed);
-	}
-
 
 	ArrayInt(std::string input) {
 		std::ifstream fin(input);
+		while (!fin) {
+			std::cout << std::endl << "File not found!" << std::endl;
+			std::cout << std::endl << "Enter file name: " << std::endl;
+			input.clear();
+			std::cin >> input;
+			fin.open(input);
+		}
 		std::string stringInFile;
 		fin >> stringInFile;
 
@@ -142,7 +165,7 @@ public:
 		}
 		else { size = size / intsize; }
 
-		array = new T[size];
+		array = new T[size + 1];
 		elemInArray = size;
 
 		fillArray(input);
@@ -181,21 +204,18 @@ public:
 		return ' ';
 	}
 
-	int length() {
+	int length() const {
 		return numberBases;
 	}
 
-	ArrayInt<T> concat(ArrayInt<T> seq) {
+	ArrayInt<T> concat(const ArrayInt<T>& seq) const {
 		int totElem = seq.numberBases + numberBases;
 		if (totElem % intsize != 0) {
 			totElem = (totElem / intsize) + 1;
 		}
 		else { totElem = totElem / intsize; }
 
-		ArrayInt<T> concseq;
-		concseq.numberBases = seq.numberBases + numberBases;
-		concseq.elemInArray = totElem;
-		concseq.array = new T[totElem];
+		ArrayInt<T> concseq(numberBases, seq.numberBases, totElem);
 
 		for (int i = 0; i < elemInArray; ++i) {
 			concseq.array[i] = array[i];
@@ -204,7 +224,6 @@ public:
 		T number = array[elemInArray - 1];
 
 		int freespace = intsize - (numberBases % intsize);
-		std::cout << freespace;
 
 		for (int i = 0; i < freespace; ++i) {
 			number >>= 2;
@@ -217,7 +236,9 @@ public:
 		if (freespace != 0) {
 			for (int i = 0; i < freespace; ++i) {
 				char base = seq.at(i);
-
+				if (base == ' ') {
+					number <<= 2;
+				}
 				leftShift(number, base);
 			}
 
@@ -245,15 +266,14 @@ public:
 				concseq.array[pos] = number;
 			}
 		}
+
 		return concseq;
 	}
 
-
-	ArrayInt<T> slice(int start, int end) {
+	ArrayInt<T> slice(int start, int end) const {
 		if (!isValidInput(start, end)) {
-			std::cout << "invalid parameters!" << std::endl;
-			ArrayInt<T> error;
-			return error;
+			std::cout << "Incorrect Parameters to Slice!" << std::endl;
+			exit(0);
 		}
 
 		ArrayInt<T> temp(start, end);
@@ -264,7 +284,6 @@ public:
 
 		for (int i = start; i < end; ++i) {
 			char base = at(i);
-			std::cout << base << std::endl;
 			leftShift(number, base);
 			counter++;
 
@@ -284,7 +303,7 @@ public:
 		return temp;
 	}
 
-	bool equal(const ArrayInt<T> seq) {
+	bool equal(const ArrayInt<T>& seq) const {
 		if (seq.numberBases != numberBases) {
 			return false;
 		}
@@ -297,3 +316,9 @@ public:
 		return true;
 	}
 };
+
+
+
+
+
+

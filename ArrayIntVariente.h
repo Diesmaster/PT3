@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include <bitset>
-#include "ArrayInt.h"
+//#include "ArrayInt.h"
 
 
 template<typename T> 
@@ -34,29 +34,22 @@ public:
 			subtitutie(start, einde, seq);
 		}else if (optie == "ins") {
 			incerties(start, einde, seq);
-		}
-
-		/*case ">":
-			break;
-		case "ins":
-			
-			break;
-		case "del":
+		}else if (optie == "del") {
 			delitie(start, einde);
-			break;
-		case "delins":
+		}else if (optie == "delins") {
 			delitieIncertie(start, einde, seq);
-			break;
-		case "inv":
+		}else if (optie == "inv") {
 			inversie(start, einde);
-			break;
-		}*/
+		}else {
+			return "dit is geen bestaande naam";
+		}
 		
 		return "success";
 	}
 
 private:
-	ArrayInt<T>* DNA;
+
+	ArrayInt<T>* DNA = NULL;
 
 	string subtitutie(int start, int einde, string seq) override {
 
@@ -72,19 +65,23 @@ private:
 			//DNA = new ArrayInt<T>(total);
 		}
 		else {
-			ArrayInt<T> Eerstehelft = DNA->slice(0, start);
+			ArrayInt<T> Eerstehelft = DNA->slice(0, start-1);
 			ArrayInt<T> Tweedehelft = DNA->slice(start, DNA->length() );
 
 			ArrayInt<T> sequentie(seq, true);
-			
+			cout << "sequentie: " << sequentie.length() << endl;
+			for (int x = 0; x < sequentie.length(); x++) {
+				cout << sequentie.at(x);
+			}
+			cout << endl;
 			ArrayInt<T> stap1 = Eerstehelft.concat(sequentie);
 			ArrayInt<T> total = stap1.concat(Tweedehelft);
 			
 			delete DNA;
-			DNA = new ArrayInt<T>(sequentie);
+			DNA = new ArrayInt<T>(stap1);
 		}
 
-		cout << "resultaat: " << DNA->length() << endl;
+		cout << "eerstehelft concat sequentie: " << DNA->length() << endl;
 		for (int x = 0; x < DNA->length(); x++) {
 			cout << DNA->at(x);
 		}
@@ -94,7 +91,24 @@ private:
 	}
 
 	string delitie(int start, int einde) override {
-		return "";
+		if ((start > DNA->length()) || (einde > DNA->length())) {
+			return "parameters are wrong, they will result in an array out of bound";
+		}
+
+		ArrayInt<T> Eerstehelft = DNA->slice(0, start );
+		ArrayInt<T> Tweedehelft = DNA->slice(einde, DNA->length());
+
+		delete DNA;
+		ArrayInt<T> total = Eerstehelft.concat(Tweedehelft);
+		DNA = new ArrayInt<T>(total);
+
+		cout << "delitie" << DNA->length() << endl;
+		for (int x = 0; x < DNA->length(); x++) {
+			cout << DNA->at(x);
+		}
+		cout << endl;
+
+		return "success";
 	}
 
 	string incerties(int start, int einde, string seq) override {
@@ -106,14 +120,14 @@ private:
 		}
 
 		ArrayInt<T> Eerstehelft = DNA->slice(0, start);
-		ArrayInt<T> Tweedehelft = DNA->slice(start, einde);
+		ArrayInt<T> Tweedehelft = DNA->slice(start, DNA->length());
 		
-		//ArrayInt<T> sequentie(seq, true);
+		ArrayInt<T> sequentie(seq, true);
 
-		//rrayInt<T> stap1 = Eerstehelft.concat(sequentie);
+		ArrayInt<T> stap1 = Eerstehelft.concat(sequentie);
 		
 		delete DNA;
-		ArrayInt<T> total = Eerstehelft.concat(Tweedehelft);
+		ArrayInt<T> total = stap1.concat(Tweedehelft);
 		DNA = new ArrayInt<T>(total);
 
 		cout << "resultaat" << DNA->length() << endl;
@@ -126,11 +140,79 @@ private:
 	}
 
 	string delitieIncertie(int start, int einde, string seq) override {
-		return "";
+		if ((start > DNA->length()) || (einde > DNA->length())) {
+			return "parameters are wrong, they will result in an array out of bound";
+		}
+
+		ArrayInt<T> Eerstehelft = DNA->slice(0, start);
+		ArrayInt<T> Tweedehelft = DNA->slice(einde, DNA->length());
+
+		ArrayInt<T> sequentie(seq, true);
+
+		ArrayInt<T> stap1 = Eerstehelft.concat(sequentie);
+
+		delete DNA;
+		ArrayInt<T> total = stap1.concat(Tweedehelft);
+		DNA = new ArrayInt<T>(total);
+
+		cout << "delitie-incertie" << DNA->length() << endl;
+		for (int x = 0; x < DNA->length(); x++) {
+			cout << DNA->at(x);
+		}
+		cout << endl;
+
+		return "success";
 	}
 
 	string inversie(int start, int einde) override {
-		return "";
+		if (start == einde) {
+			return "parameters zijn gelijk, er kan geen slice plaatsvinden";
+		}
+		else if ((start > DNA->length()) || (einde > DNA->length())) {
+			return "parameters are wrong, they will result in an array out of bound";
+		}
+
+		ArrayInt<T> Eerstehelft = DNA->slice(0, start);
+		ArrayInt<T> Tweedehelft = DNA->slice(einde, DNA->length());
+		
+		string stonks;
+		for (int x = start; x < einde; x++) {
+			char test = DNA->at(x);
+			cout << x << " " << test << endl;
+			switch (test){
+			case 'A':
+				stonks = stonks + 'T';
+				break;
+			case 'T':
+				stonks = stonks + 'A';
+				break;
+			case 'C':
+				stonks = stonks + 'G';
+				break;
+			case 'G':
+				stonks = stonks + 'C';
+				break;
+			}
+		}
+		
+
+		ArrayInt<T> sequentie(stonks, true);
+		
+
+		ArrayInt<T> stap1 = Eerstehelft.concat(sequentie);
+		
+
+		delete DNA;
+		ArrayInt<T> total = stap1.concat(Tweedehelft);
+		DNA = new ArrayInt<T>(total);
+		
+		cout << "inv" << DNA->length() << endl;
+		for (int x = 0; x < DNA->length(); x++) {
+			cout << DNA->at(x);
+		}
+		cout << endl;
+
+		return "success";
 	}
 
 };

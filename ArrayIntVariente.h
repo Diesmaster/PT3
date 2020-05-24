@@ -29,7 +29,7 @@ public:
 
 	//write functie implementatie
 	void write(string output) override {
-		ofstream myfile;
+		std::ofstream myfile;
 		myfile.open(output); //output file
 		string result; //string die je boutw
 		for (int x = 0; x < DNA->length(); x++){ //loop door DNA heen
@@ -88,18 +88,18 @@ private:
 		
 			
 			ArrayInt<T> stap1 = Eerstehelft.concat(sequentie); //concat het allemaal
-			ArrayInt<T> total = stap1.concat(Tweedehelft); /
+			ArrayInt<T> total = stap1.concat(Tweedehelft); 
 			
 			delete DNA;
 			DNA = new ArrayInt<T>(total); //sla de totaal op
 		}
 
 		//printen
-		cout << "eerstehelft concat sequentie: " << DNA->length() << endl;
+		std::cout << "eerstehelft concat sequentie: " << DNA->length() << endl;
 		for (int x = 0; x < DNA->length(); x++) {
-			cout << DNA->at(x);
+			std::cout << DNA->at(x);
 		}
-		cout << endl;
+		std::cout << endl;
 
 		//gelukt
 		return "success";
@@ -120,11 +120,11 @@ private:
 		DNA = new ArrayInt<T>(total); //stop het in DNA
 
 
-		cout << "delitie" << DNA->length() << endl; //print
+		std::cout << "delitie" << DNA->length() << endl; //print
 		for (int x = 0; x < DNA->length(); x++) {
-			cout << DNA->at(x);
+			std::cout << DNA->at(x);
 		}
-		cout << endl;
+		std::cout << endl;
 		
 		//gelukt
 		return "success";
@@ -153,11 +153,11 @@ private:
 		DNA = new ArrayInt<T>(total); //lekker klemmen
 
 		//print het
-		cout << "resultaat" << DNA->length() << endl;
+		std::cout << "resultaat" << DNA->length() << endl;
 		for (int x = 0; x < DNA->length(); x++) {
-			cout << DNA->at(x);
+			std::cout << DNA->at(x);
 		}
-		cout << endl; 
+		std::cout << endl; 
 
 		//vlag uit?
 		return "geslaagt";
@@ -183,11 +183,11 @@ private:
 		DNA = new ArrayInt<T>(total);
 
 		//print
-		cout << "delitie-incertie" << DNA->length() << endl;
+		std::cout << "delitie-incertie" << DNA->length() << endl;
 		for (int x = 0; x < DNA->length(); x++) {
-			cout << DNA->at(x);
+			std::cout << DNA->at(x);
 		}
-		cout << endl;
+		std::cout << endl;
 		//jeeeh
 		return "success";
 	}
@@ -209,7 +209,7 @@ private:
 		string stonks;
 		for (int x = start; x < einde; x++) {
 			char test = DNA->at(x);
-			cout << x << " " << test << endl;
+			std::cout << x << " " << test << endl;
 			switch (test){
 			case 'A':
 				stonks = stonks + 'T';
@@ -238,11 +238,11 @@ private:
 		DNA = new ArrayInt<T>(total);
 		
 		//print
-		cout << "inv" << DNA->length() << endl;
+		std::cout << "inv" << DNA->length() << endl;
 		for (int x = 0; x < DNA->length(); x++) {
-			cout << DNA->at(x);
+			std::cout << DNA->at(x);
 		}
-		cout << endl;
+		std::cout << endl;
 
 		//jeeh
 		return "success";

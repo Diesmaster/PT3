@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PT2.cpp" />
+    <ClCompile Include="StringVariente.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DNAstring.h" />

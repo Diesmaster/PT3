@@ -5,7 +5,6 @@
 #include <fstream>
 #include "LinkedList.h"
 
-using namespace std;
 
 template<typename T>
 class LinkedListVariente : public VariantInterface {
@@ -23,7 +22,7 @@ public:
 
 	//schrijf het dna weg
 	void write(string output) override {
-		ofstream myfile;
+		std::ofstream myfile;
 		myfile.open(output);
 		string result;
 		for (int x = 0; x < DNA->length(); x++) {
@@ -93,11 +92,11 @@ private:
 
 		}
 		//print
-		cout << "sub: " << DNA->length() << endl;
+		std::cout << "sub: " << DNA->length() << endl;
 		for (int x = 0; x < DNA->length(); x++) {
-			cout << DNA->at(x);
+			std::cout << DNA->at(x);
 		}
-		cout << endl;
+		std::cout << endl;
 
 		//jeeh
 		return "success";
@@ -122,11 +121,11 @@ private:
 		DNA = new LinkedList<T>(total);
 
 		//druk af
-		cout << "del: " << DNA->length() << endl;
+		std::cout << "del: " << DNA->length() << endl;
 		for (int x = 0; x < DNA->length(); x++) {
-			cout << DNA->at(x);
+			std::cout << DNA->at(x);
 		}
-		cout << endl;
+		std::cout << endl;
 
 		//jeeeh
 		return "success";
@@ -189,11 +188,11 @@ private:
 		}
 
 		//print
-		cout << "sub: " << DNA->length() << endl;
+		std::cout << "sub: " << DNA->length() << endl;
 		for (int x = 0; x < DNA->length(); x++) {
-			cout << DNA->at(x);
+			std::cout << DNA->at(x);
 		}
-		cout << endl;
+		std::cout << endl;
 
 		return "sucsess";
 
@@ -250,9 +249,9 @@ private:
 		delete DNA;
 		DNA = new LinkedList<T>(total);
 	}
-		cout << "sub: " << DNA->length() << endl;
+		std::cout << "sub: " << DNA->length() << endl;
 		for (int x = 0; x < DNA->length(); x++) {
-			cout << DNA->at(x);
+			std::cout << DNA->at(x);
 		}
 		cout << endl;
 

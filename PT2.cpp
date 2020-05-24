@@ -7,11 +7,12 @@
 #include "LinkedList.h"
 #include "DNAstring.h"
 
-#include "VarianteInterface.h"
+#include "StringVariente.h"
+//#include "VarianteInterface.h"
 
 #include "LinkedListVariente.h"
 #include "ArrayIntVariente.h"
-#include "StringVariente.h"
+
 
 //deze start het prigramma
 bool startProgram(VariantInterface* ptr) {

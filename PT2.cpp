@@ -72,7 +72,7 @@ bool startProgram(VariantInterface* ptr) {
 int main() {
 
 	int keuze = -1;
-	while ((keuze != 1) && (keuze != 2)) {
+	while ((keuze != 1) && (keuze != 2) && (keuze != 3)) {
 		cout << "Wilt u het opslaan in een array(1), of in een pointerlijst(2), of een string(3)?" << endl;
 		cout << "druk op 1 of 2 of 3 respectivelijk" << endl;
 		cin >> keuze;
@@ -145,12 +145,12 @@ int main() {
 			delete oof3;
 		}
 		break;
-		}
-	}else {
-		StringVariente* string = new StringVariente();
-		string->read(input);
-		startProgram(string);
-		delete string;
+	}
+	}else if(keuze == 3){
+		StringVariente* String = new StringVariente();
+		String->read(input);
+		startProgram(String);
+		delete String;
 	}
 	return 0;
 }

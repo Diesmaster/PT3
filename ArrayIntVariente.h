@@ -79,12 +79,12 @@ private:
 
 			ArrayInt<T> sequentie(seq, true);
 			
-			cout << endl;
+			
 			ArrayInt<T> stap1 = Eerstehelft.concat(sequentie);
 			ArrayInt<T> total = stap1.concat(Tweedehelft);
 			
 			delete DNA;
-			DNA = new ArrayInt<T>(stap1);
+			DNA = new ArrayInt<T>(total);
 		}
 
 		cout << "eerstehelft concat sequentie: " << DNA->length() << endl;

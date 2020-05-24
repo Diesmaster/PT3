@@ -24,8 +24,8 @@ public:
 
 
 	void read(string input) override {
-		ArrayInt<T>* stonks = new ArrayInt<T>(input);
-		DNA = stonks;
+		DNA = new ArrayInt<T>(input);
+	
 		return;
 	}
 

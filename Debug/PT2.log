@@ -1,1 +1,39 @@
-﻿  PT2.vcxproj -> C:\Users\chris\source\repos\PT2\Debug\PT2.exe
+﻿  PT2.cpp
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(101,11): warning C4018: '>': signed/unsigned mismatch
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message : while compiling class template member function 'LinkedList<T>::LinkedList(std::string,bool)'
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :         with
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :         [
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(208): message : see reference to function template instantiation 'LinkedList<T>::LinkedList(std::string,bool)' being compiled
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(208): message :         with
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(208): message :         [
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(208): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(208): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(181): message : see reference to class template instantiation 'LinkedList<T>' being compiled
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(181): message :         with
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(181): message :         [
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(181): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(181): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(177): message : while compiling class template member function 'std::string LinkedListVariente<uint8_t>::inversie(int,int)'
+C:\Users\chris\source\repos\PT2\PT2\PT2.cpp(89): message : see reference to class template instantiation 'LinkedListVariente<uint8_t>' being compiled
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(97,11): warning C4018: '>': signed/unsigned mismatch
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(87): message : while compiling class template member function 'void ArrayInt<T>::fillArrayString(std::string &)'
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(87): message :         with
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(87): message :         [
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(87): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(87): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(131): message : see reference to function template instantiation 'void ArrayInt<T>::fillArrayString(std::string &)' being compiled
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(131): message :         with
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(131): message :         [
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(131): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(131): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(173): message : see reference to class template instantiation 'ArrayInt<T>' being compiled
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(173): message :         with
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(173): message :         [
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(173): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(173): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\ArrayIntVariente.h(169): message : while compiling class template member function 'std::string ArrayIntVariente<uint8_t>::inversie(int,int)'
+C:\Users\chris\source\repos\PT2\PT2\PT2.cpp(117): message : see reference to class template instantiation 'ArrayIntVariente<uint8_t>' being compiled
+C:\Users\chris\source\repos\PT2\PT2\StringVariente.h(85): warning C4715: 'StringVariente::subtitutie': not all control paths return a value
+  PT2.vcxproj -> C:\Users\chris\source\repos\PT2\Debug\PT2.exe

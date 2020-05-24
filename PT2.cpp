@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <bitset>
+#include <vector>
 
 //#include "ArrayInt.h"
 #include "LinkedList.h"
@@ -19,20 +20,41 @@ string manipulatie(VariantInterface* ptr) {
 
 bool startProgram(VariantInterface* ptr) {
 	bool stop = false;
-	while (stop != true) {
-		int start, einde;
-		string type, seq;
-		cout << "als u wilt stoppen met de varianten voer dan stop waar type moet in." << endl;
-		cout << "als u varianten wilt maken druk gebruik dan deze manier: " << endl;
-		cout << "start, end, type, seq(optioneel). Typ een enter waar een comma staat" << endl;
-		cin >> start;
-		cin >> einde;
-		cin >> type;
-		cin >> seq;
-		if (type == "stop") {
-			return true;
+	string antwoord;
+	cout << "wilt u automaties de taken uitvoeren? ja/nee" << endl;
+	cin >> antwoord;
+	if (antwoord == "ja") {
+		string input;
+		cout << "welke file wilt u gebruiken?" << endl;
+		cin >> input;
+		vector<string> instructies;
+		std::ifstream fin(input);
+		string instructie;
+		fin >> instructie;
+		
+		while(!fin.eof()){
+			instructies.push_back(instructie);
+			fin >> instructie;
 		}
-		cout << ptr->opdracht(start, einde, type, seq) << endl;
+		
+		ptr->supplyVector(instructies);
+	}else {
+		while (stop != true) {
+			int start, einde;
+			string type, seq;
+			cout << "als u wilt stoppen met de varianten voer dan stop waar type moet in." << endl;
+			cout << "als u varianten wilt maken druk gebruik dan deze manier: " << endl;
+			cout << "start, end, type, seq(optioneel). Typ een enter waar een comma staat" << endl;
+			cin >> start;
+			cin >> einde;
+			cin >> type;
+			cin >> seq;
+			if (type == "stop") {
+				return true;
+			}
+			cout << ptr->opdracht(start, einde, type, seq) << endl;
+
+		}
 	}
 	return true;
 }

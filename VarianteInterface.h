@@ -24,15 +24,15 @@ public:
 			string optie;
 			string seq = "";
 			
-			char kar;
+			char kar = ' ';
 			int p = 0;
-			int t = 0;
+			int t = 1;
 
 			while (kar != '.') {
-				kar = test[x];
+				kar = test[p];
 				if (kar == ',') {
 					t++;
-				}else {
+				}else if(kar != '.'){
 					switch (t) {
 					case 1:
 						strStart = strStart + kar;
@@ -48,13 +48,15 @@ public:
 						break;
 					}
 				}
-				x++;
+				p++;
 			}
 			start = std::stoi(strStart);
 			einde = std::stoi(strEinde);
-
+			cout << strStart << " " << strEinde << " " << optie << " " << seq << " " << endl;
+			//cout << "size: " << opdrachten.size() << endl;
 			opdracht(start, einde, optie, seq);
 		}
+		return "sucses";
 	}
 
 private:

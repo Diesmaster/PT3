@@ -8,12 +8,15 @@
 class VariantInterface {
 
 public:
-	//leest een filepath in
+	//leest een filepath in en output niks
 	virtual void read(string input) = 0;
+
 	//schrijft DNA weg naar een output file, output is filepath
 	virtual void write(string output) = 0;
-	//de opdracht
+	
+	//leest een opdracht in, en output de message succses of error
 	virtual string opdracht(int start, int einde, string optie, string seq = "") = 0;
+	
 	//destructor
 	virtual ~VariantInterface() {};
 

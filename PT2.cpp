@@ -4,6 +4,7 @@
 
 #include "ArrayInt.h"
 #include "LinkedList.h"
+#include "DNAstring.h"
 
 #include "VarianteInterface.h"
 
@@ -114,7 +115,10 @@ int main() {
 		break;
 		}
 	}else {
-		StringVariente(input);
+		StringVariente* string = new StringVariente();
+		string->read(input);
+		startProgram(string);
+		delete string;
 	}
 	return 0;
 }

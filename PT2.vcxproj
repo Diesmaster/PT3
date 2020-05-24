@@ -151,7 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DNAstring.cpp" />
     <ClCompile Include="PT2.cpp" />
   </ItemGroup>
   <ItemGroup>

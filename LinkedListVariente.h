@@ -86,20 +86,139 @@ private:
 			}
 			cout << endl;
 
-			return "";
+			return "success";
 		}
 	}
 
 	string delitie(int start, int einde) override {
-		return "";
+		if (start == einde) {
+			return "parameters zijn niet gelijk, er kan geen subtitutie plaatsvinden";
+		}
+		else if ((start > DNA->length()) || (einde > DNA->length())) {
+			return "parameters are wrong, they will result in an array out of bound";
+		}
+
+		LinkedList<T> eerstedeel = DNA->slice(0, start);
+		LinkedList<T> tweededeel = DNA->slice(einde, DNA->length());
+		
+		LinkedList<T> total = eerstedeel.concat(tweededeel);
+
+		delete DNA;
+		DNA = new LinkedList<T>(total);
+
+		cout << "del: " << DNA->length() << endl;
+		for (int x = 0; x < DNA->length(); x++) {
+			cout << DNA->at(x);
+		}
+		cout << endl;
+
+
+		return "success";
 	}
+
 	string incerties(int start, int einde, string seq) override {
-		return "";
+		if (start != einde) {
+			return "parameters zijn niet gelijk, er kan geen subtitutie plaatsvinden";
+		}
+		else if ((start > DNA->length()) || (einde > DNA->length())) {
+			return "parameters are wrong, they will result in an array out of bound";
+		}
+
+		LinkedList<T> eerstedeel = DNA->slice(0, start);
+		LinkedList<T> tweededeel = DNA->slice(start, DNA->length());
+
+		LinkedList<T> sequence(seq, true);
+
+		LinkedList<T> stap1 = eerstedeel.concat(sequence);
+		LinkedList<T> total = stap1.concat(tweededeel);
+
+		delete DNA;
+		DNA = new LinkedList<T>(total);
+
+		cout << "sub: " << DNA->length() << endl;
+		for (int x = 0; x < DNA->length(); x++) {
+			cout << DNA->at(x);
+		}
+		cout << endl;
+
+		return "sucsess";
+	
 	}
+
 	string delitieIncertie(int start, int einde, string seq) override {
-		return "";
+		if (start == einde) {
+			return "parameters zijn niet gelijk, er kan geen subtitutie plaatsvinden";
+		}
+		else if ((start > DNA->length()) || (einde > DNA->length())) {
+			return "parameters are wrong, they will result in an array out of bound";
+		}
+
+		LinkedList<T> eerstedeel = DNA->slice(0, start);
+		LinkedList<T> tweededeel = DNA->slice(einde, DNA->length());
+
+		LinkedList<T> sequence(seq, true);
+
+		LinkedList<T> stap1 = eerstedeel.concat(sequence);
+		LinkedList<T> total = stap1.concat(tweededeel);
+
+		delete DNA;
+		DNA = new LinkedList<T>(total);
+
+		cout << "sub: " << DNA->length() << endl;
+		for (int x = 0; x < DNA->length(); x++) {
+			cout << DNA->at(x);
+		}
+		cout << endl;
+
+		return "sucsess";
 	}
+
 	string inversie(int start, int einde) override {
-		return "";
+		if (start == einde) {
+			return "parameters zijn niet gelijk, er kan geen subtitutie plaatsvinden";
+		}
+		else if ((start > DNA->length()) || (einde > DNA->length())) {
+			return "parameters are wrong, they will result in an array out of bound";
+		}
+
+		LinkedList<T> eerstedeel = DNA->slice(0, start);
+		LinkedList<T> tweededeel = DNA->slice(einde, DNA->length());
+
+		string stonks;
+		for (int x = start; x < einde; x++) {
+			char test = DNA->at(x);
+			cout << x << " " << test << endl;
+			switch (test) {
+			case 'A':
+				stonks = stonks + 'T';
+				break;
+			case 'T':
+				stonks = stonks + 'A';
+				break;
+			case 'C':
+				stonks = stonks + 'G';
+				break;
+			case 'G':
+				stonks = stonks + 'C';
+				break;
+			}
+		}
+
+		LinkedList<T> sequence(stonks, true);
+
+		LinkedList<T> stap1 = eerstedeel.concat(sequence);
+		LinkedList<T> total = stap1.concat(tweededeel);
+
+		delete DNA;
+		DNA = new LinkedList<T>(total);
+
+		cout << "sub: " << DNA->length() << endl;
+		for (int x = 0; x < DNA->length(); x++) {
+			cout << DNA->at(x);
+		}
+		cout << endl;
+
+		return "sucsess";
 	}
+
 };

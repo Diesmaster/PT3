@@ -2,12 +2,11 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
 
 
 //constructor
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-DNAstring::DNAstring( string String) {
+DNAstring::DNAstring( std::string String) {
 	DNA = String;
 }
 
@@ -19,31 +18,27 @@ int DNAstring::length() {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-char DNAstring::char_at(int pos) {
+char DNAstring::at(int pos) {
 	return (char)DNA.at(pos);
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-DNAstring* DNAstring::concat(string plakker) {
-	string helper = DNA + plakker;
-	DNAstring* hulpje;
-	hulpje = new DNAstring(helper);
-	return hulpje;
+DNAstring DNAstring::concat(std::string plakker) {
+	std::string helper = DNA + plakker;
+	return helper;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-DNAstring* DNAstring::slice(int start, int einde) {
-	string helper = DNA.substr(start, einde);
-	DNAstring* hulpje;
-	hulpje = new DNAstring(helper);
-	return hulpje;
+DNAstring DNAstring::slice(int start, int einde) {
+	std::string helper = DNA.substr(start, einde);
+	return helper;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-bool DNAstring::equal(string test) {
+bool DNAstring::equal(std::string test) {
 	if (DNA == test) {
 		return true;
 	}
@@ -53,11 +48,11 @@ bool DNAstring::equal(string test) {
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 void DNAstring::print() {
-	cout << DNA << endl;
+	std::cout << DNA << std::endl;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-string DNAstring::getString() {
+std::string DNAstring::getString() {
 	return DNA;
 }

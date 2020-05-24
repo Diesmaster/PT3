@@ -9,7 +9,6 @@
 
 
 
-using namespace std;
 
 class DNAstring
 {
@@ -17,67 +16,40 @@ public:
 	
 	//constructor
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	DNAstring(string String) {
-		DNA = String;
-	}
+	DNAstring(std::string String);
 
-	DNAstring(string input, bool bigPeen) {
-		std::ifstream fin(input);
-		string String;
-		fin >> String;
-		DNA = String;
-	}
+
+	DNAstring(std::string input, bool bigPeen);
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-	int  length() {
-		return (int)DNA.size();
-	}
+	int  length();
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-	char at(int pos) {
-		return (char)DNA.at(pos);
-	}
+	char at(int pos);
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-	DNAstring concat(string plakker) {
-		string helper = DNA + plakker;
-		DNAstring hulpje(helper);
-		return hulpje;
-	}
+	DNAstring concat(std::string plakker);
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-	DNAstring  slice(int start, int einde) {
-		string helper = DNA.substr(start, einde);
-		DNAstring hulpje(helper);
-		return hulpje;
-	}
+	DNAstring  slice(int start, int einde);
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-	bool  equal(string test) {
-		if (DNA == test) {
-			return true;
-		}
-		return false;
-	}
+	bool  equal(std::string test);
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-	void  print() {
-		cout << DNA << endl;
-	}
+	void  print();
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-	string  getString() {
-		return DNA;
-	}
+	std::string  getString();
 
 private:
-	string DNA;
+	std::string DNA;
 };
 

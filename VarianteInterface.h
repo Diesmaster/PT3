@@ -10,11 +10,16 @@ using namespace std;
 class VariantInterface {
 
 public:
+	//leest een filepath in
 	virtual void read(string input) = 0;
+	//schrijft DNA weg naar een output file, output is filepath
 	virtual void write(string output) = 0;
+	//de opdracht
 	virtual string opdracht(int start, int einde, string optie, string seq = "") = 0;
+	//destructor
 	virtual ~VariantInterface() {};
 
+	//de vector drugdealer, die opdrachten automatischeerd
 	string supplyVector(vector< string > opdrachten) {
 		for (int x = 0; x < (int)opdrachten.size(); x++) {
 			string test = opdrachten[x];
@@ -60,10 +65,15 @@ public:
 	}
 
 private:
+	//veranderd 1 char voor een andere
 	virtual string subtitutie(int start, int einde, string seq) = 0;
+	//voegt een string toe op een plek
 	virtual string incerties(int start, int einde, string seq) = 0;
+	//een grote subtitiutie
 	virtual string delitieIncertie(int start, int einde, string seq) = 0;
+	//maakt een stukje string invers
 	virtual string inversie(int start, int einde) = 0;
+	//delete een stukje string
 	virtual string delitie(int start, int einde) = 0;
 
 };

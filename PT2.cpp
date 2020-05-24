@@ -13,20 +13,23 @@
 #include "ArrayIntVariente.h"
 #include "StringVariente.h"
 
-
-string manipulatie(VariantInterface* ptr) {
-	return "success";
-}
-
+//deze start het prigramma
 bool startProgram(VariantInterface* ptr) {
 	bool stop = false;
+	
+	//selecteer het type interactie
 	string antwoord;
 	cout << "wilt u automaties de taken uitvoeren? ja/nee" << endl;
 	cin >> antwoord;
+	
+	//de automatische kant
 	if (antwoord == "ja") {
-		string input;
+		
+		string input; //krijg de input file
 		cout << "welke file wilt u gebruiken?" << endl;
 		cin >> input;
+		
+		//maak de instructies
 		vector<string> instructies;
 		std::ifstream fin(input);
 		string instructie;
@@ -37,17 +40,23 @@ bool startProgram(VariantInterface* ptr) {
 			fin >> instructie;
 		}
 		
+		//geef de instructies door
 		ptr->supplyVector(instructies);
 
+		//vraag of je het wilt wegschrijven in een bestand
 		cout << "wilt u de file wegschrijven naar een document? (ja/nee)" << endl;
 		cin >> antwoord;
+		
+		//krijg het path naar het bestand
 		string output;
 		if (antwoord == "ja") {
 			cout << "naar welke file?" << endl;
 			cin >> output;
 			ptr->write(output);
 		}
+
 	}else {
+		//handmatig klieren
 		while (stop != true) {
 			int start, einde;
 			string type, seq;
@@ -65,18 +74,22 @@ bool startProgram(VariantInterface* ptr) {
 
 		}
 	}
+	//je hebt het overleeft
 	return true;
 }
 
 
 int main() {
 
+	//kies het type opslag bestand
 	int keuze = -1;
 	while ((keuze != 1) && (keuze != 2) && (keuze != 3)) {
 		cout << "Wilt u het opslaan in een array(1), of in een pointerlijst(2), of een string(3)?" << endl;
 		cout << "druk op 1 of 2 of 3 respectivelijk" << endl;
 		cin >> keuze;
 	}
+
+	//kies het type type opslag bestand
 	int groote = -1;
 	while ((groote != 8) && (groote != 16) && (groote != 32)) {
 		cout << "Wilt u het opslaan in 8, 16, of 32 bit integers?" << endl;
@@ -84,14 +97,13 @@ int main() {
 		cin >> groote;
 	}
 
+	//geef de file name waar het basis dna in is opgeslagen
 	std::string input;
 	std::cout << "Geef alst u blieft de file name" << std::endl;
 	std::cin >> input;
 	
-
-	//VariantInterface* ptr;
-
-	if (keuze == 2) {
+	//start het programma met het correcte object
+	if (keuze == 2) { //linked list
 		switch (groote) {
 		case 8:
 		{
@@ -119,7 +131,7 @@ int main() {
 		break;
 		}
 	}
-	else if(keuze == 1){
+	else if(keuze == 1){ //arrayint
 		switch (groote) {
 		case 8:
 		{
@@ -146,14 +158,17 @@ int main() {
 		}
 		break;
 	}
-	}else if(keuze == 3){
+	}else if(keuze == 3){ //string
 		StringVariente* String = new StringVariente();
 		String->read(input);
 		startProgram(String);
 		delete String;
 	}
+	//we zijn klaar
 	return 0;
 }
+
+/*nog een fijne dag <3*/
 
 
 

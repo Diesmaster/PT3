@@ -156,6 +156,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DNAstring.h" />
+    <ClInclude Include="ArrayInt.h" />
+    <ClInclude Include="ArrayIntVariente.h" />
+    <ClInclude Include="LinkedListVariente.h" />
+    <ClInclude Include="VarianteInterface.h" />
+    <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

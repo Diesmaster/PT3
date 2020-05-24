@@ -18,9 +18,6 @@ public:
 		delete DNA;
 	}
 	
-	ArrayIntVariente() {
-		
-	}
 
 
 	void read(string input) override {
@@ -60,7 +57,7 @@ public:
 
 private:
 
-	ArrayInt<T>* DNA;
+	ArrayInt<T>* DNA = nullptr;
 
 	string subtitutie(int start, int einde, string seq) override {
 

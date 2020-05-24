@@ -94,7 +94,7 @@ class ArrayInt {
 		while (!end) {
 			T number = 0;
 			for (int i = 0; i < intsize; ++i) {
-				if (x > PassedString.length()) {
+				if (x > (int)PassedString.length()) {
 					number <<= 2;
 				
 					x++;

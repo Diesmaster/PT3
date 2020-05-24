@@ -109,7 +109,7 @@ public:
 		while (!end) {
 			T number = 0;
 			for (int i = 0; i < intsize; ++i) {
-				if (x > input.length()) {
+				if (x > (int)input.length()) {
 					number <<= 2;
 					//fin.get(base);
 					x++;

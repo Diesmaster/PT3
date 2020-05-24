@@ -53,7 +53,7 @@ public:
 	}
 
 private:
-	DNAstring* DNA;
+	DNAstring* DNA = nullptr;
 
 	string subtitutie(int start, int einde, string seq) override {
 		if (start != einde) {
@@ -90,6 +90,7 @@ private:
 
 			return "success";
 		}
+		return "oof";
 	}
 
 	string delitie(int start, int einde) override {

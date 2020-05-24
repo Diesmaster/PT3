@@ -11,10 +11,6 @@ template<typename T>
 class LinkedListVariente : public VariantInterface {
 public:
 
-	LinkedListVariente() {
-
-	}
-
 	~LinkedListVariente() {
 		delete DNA;
 	}
@@ -59,7 +55,7 @@ public:
 	}
 
 private:
-	LinkedList<T>* DNA;
+	LinkedList<T>* DNA = nullptr;
 
 	string subtitutie(int start, int einde, string seq) override {
 		if (start != einde) {

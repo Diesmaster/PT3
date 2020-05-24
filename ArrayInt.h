@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <iostream>
 #include <cstdint>
 #include <fstream>
@@ -296,6 +297,3 @@ public:
 		return true;
 	}
 };
-
-#pragma once
-#pragma once

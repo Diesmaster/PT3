@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #pragma once
 #include <iostream>
 #include <cstdint>
@@ -7,249 +8,249 @@
 using namespace std;
 
 template <typename T>
-class LinkedList{
-    int numberBases = 0;
-    const int intsize = sizeof(T) * 4;
-    int listSize = 0;
-    
-    struct object{
-        T number;
-        object* next;
-        object* prev;
+class LinkedList {
+	int numberBases = 0;
+	const int intsize = sizeof(T) * 4;
+	int listSize = 0;
 
-        object(){
-            number = 0;
-            next = nullptr;
-            prev = nullptr;
-        }
-    };
+	struct object {
+		T number;
+		object* next;
+		object* prev;
 
-    void add_back(T value){
-        object* temp;
-        temp = new object;
-        temp->number = value;
-        
-        if(front){
-            temp->prev = end;
-            end->next = temp;
-            end = temp;
-        }
-        else{
-            front = temp;
-            temp->prev = nullptr;
-            temp->next = nullptr;
-            end = temp;
-        }       
-        listSize++;
-    } 
-    
-    void leftShift(T &number, char base){
-        if(base == 'A'){
-            number <<= 2;
-        }
-        if(base == 'T'){
-            number = (number << 2) | 1;
-        }
-        if(base == 'C'){
-            number = (number << 2) | 2;
-        }
-        if(base == 'G'){
-            number = (number << 2) | 3;
-        }
-    }
-    
-    bool isValidInput(int start, int end){
-        if(start < 0 || start > numberBases || end < 0 || end > numberBases || end < start || start == end){
-            return false;
-        }
-        return true;
-    }
+		object() {
+			number = 0;
+			next = nullptr;
+			prev = nullptr;
+		}
+	};
 
-    LinkedList(int start, int end){
-        numberBases = end - start;
-    }
+	void add_back(T value) {
+		object* temp;
+		temp = new object;
+		temp->number = value;
 
-    LinkedList(){
-        numberBases = 0;
-    }
+		if (front) {
+			temp->prev = end;
+			end->next = temp;
+			end = temp;
+		}
+		else {
+			front = temp;
+			temp->prev = nullptr;
+			temp->next = nullptr;
+			end = temp;
+		}
+		listSize++;
+	}
 
-    public:
-    
-    object* front = nullptr;
-    object* end = nullptr;
+	void leftShift(T& number, char base) {
+		if (base == 'A') {
+			number <<= 2;
+		}
+		if (base == 'T') {
+			number = (number << 2) | 1;
+		}
+		if (base == 'C') {
+			number = (number << 2) | 2;
+		}
+		if (base == 'G') {
+			number = (number << 2) | 3;
+		}
+	}
 
-    LinkedList(std::string input){
-        std::ifstream fin(input);
-        char base;
-        bool end = false;
-        fin.get(base);
+	bool isValidInput(int start, int end) {
+		if (start < 0 || start > numberBases || end < 0 || end > numberBases || end < start || start == end) {
+			return false;
+		}
+		return true;
+	}
 
-        while(!fin.eof() && !end){
-            T number = 0;
-            for(int i = 0; i < intsize; ++i){
-                if(fin.eof() || (base != 'A' && base != 'T' && base != 'C' && base != 'G')){
-                    number <<= 2;
-                    fin.get(base);
-                    end = true;
-                    continue;
-                }
-                leftShift(number, base);
-                numberBases++;
-                fin.get(base);
-            }
-            add_back(number);
-        }
-    }
+	LinkedList(int start, int end) {
+		numberBases = end - start;
+	}
 
-    int length(){
-        return numberBases;
-    }
+	LinkedList() {
+		numberBases = 0;
+	}
 
-    bool equal(const LinkedList<T> seq){
-        if(seq.numberBases != numberBases){
-            return false;
-        }
-        
-        object* a = seq.front;
-        object* b = front;
+public:
 
-        while(b->next != nullptr){
-            if(a->number != b-> number){
-                return false;
-            }
-            a = a->next;
-            b = b->next;
-        }
-    return true;
-    }
+	object* front = nullptr;
+	object* end = nullptr;
 
-    LinkedList<T> concat(LinkedList<T> seq){
-        LinkedList<T> concseq;
-        concseq.numberBases = numberBases + seq.numberBases;
-        
-        object* temp = front;
+	LinkedList(std::string input) {
+		std::ifstream fin(input);
+		char base;
+		bool end = false;
+		fin.get(base);
 
-        while(temp){
-            concseq.add_back(temp->number);
-            temp = temp->next;
-        }
+		while (!fin.eof() && !end) {
+			T number = 0;
+			for (int i = 0; i < intsize; ++i) {
+				if (fin.eof() || (base != 'A' && base != 'T' && base != 'C' && base != 'G')) {
+					number <<= 2;
+					fin.get(base);
+					end = true;
+					continue;
+				}
+				leftShift(number, base);
+				numberBases++;
+				fin.get(base);
+			}
+			add_back(number);
+		}
+	}
 
-        T number = concseq.end->number;
+	int length() {
+		return numberBases;
+	}
 
-        int freespace = intsize - (numberBases % intsize);     
-        std::cout << freespace;
+	bool equal(const LinkedList<T> seq) {
+		if (seq.numberBases != numberBases) {
+			return false;
+		}
 
-        for(int i = 0; i < freespace; ++i){
-            number >>= 2;
-        }   
+		object* a = seq.front;
+		object* b = front;
 
-        if(freespace != 0){
-            for(int i = 0; i < freespace; ++i){
-                char base = seq.at(i);
-                leftShift(number, base);
-            }
-            concseq.end->number = number;
-            number = 0;
-        }
+		while (b->next != nullptr) {
+			if (a->number != b->number) {
+				return false;
+			}
+			a = a->next;
+			b = b->next;
+		}
+		return true;
+	}
 
-        int counter = 0;
-        for(int i = freespace; i < seq.numberBases; ++i){
-            char base = seq.at(i);
-            leftShift(number, base);
-            counter++;
-            if(counter % intsize == 0){
-                concseq.add_back(number);
-                counter = 0;
-            }
-        }
+	LinkedList<T> concat(LinkedList<T> seq) {
+		LinkedList<T> concseq;
+		concseq.numberBases = numberBases + seq.numberBases;
 
-        while(counter % intsize != 0){
-            number <<= 2;
-            counter++;
-            if(counter % intsize == 0){
-                concseq.add_back(number);
-            }
-        }
+		object* temp = front;
 
-        for(int i = 0; i < concseq.numberBases; ++i){
-            std::cout << concseq.at(i);
-        }
+		while (temp) {
+			concseq.add_back(temp->number);
+			temp = temp->next;
+		}
 
-        return concseq;
-    }
+		T number = concseq.end->number;
 
-    LinkedList<T> slice(int start, int end){
-        if(!isValidInput(start, end)){
-            std::cout << "invalid parameters!" << std::endl;
-            LinkedList<T> error;
-            return error;
-        }
+		int freespace = intsize - (numberBases % intsize);
+		std::cout << freespace;
 
-        LinkedList<T> temp(start, end);
+		for (int i = 0; i < freespace; ++i) {
+			number >>= 2;
+		}
 
-        int counter = 0;
-        T number = 0;
+		if (freespace != 0) {
+			for (int i = 0; i < freespace; ++i) {
+				char base = seq.at(i);
+				leftShift(number, base);
+			}
+			concseq.end->number = number;
+			number = 0;
+		}
 
-        for(int i = start; i < end; ++i){
-            char base = at(i);
-            leftShift(number, base);
-            counter++;
-            if(counter % intsize == 0){
-                temp.add_back(number);
-                number = 0;
-            }
-        }
-        
-        while(counter % intsize != 0){
-            number <<= 2;
-            counter++;
-            if(counter % intsize == 0){
-                temp.add_back(number);
-            }
-        }
-        for(int i = 0; i < temp.numberBases; ++i){
-            std::cout << temp.at(i);
-        }
-        return temp;
-    }
+		int counter = 0;
+		for (int i = freespace; i < seq.numberBases; ++i) {
+			char base = seq.at(i);
+			leftShift(number, base);
+			counter++;
+			if (counter % intsize == 0) {
+				concseq.add_back(number);
+				counter = 0;
+			}
+		}
 
-    char at(int pos){
-        if(pos >= numberBases || pos < 0){
-            return ' ';
-        }
+		while (counter % intsize != 0) {
+			number <<= 2;
+			counter++;
+			if (counter % intsize == 0) {
+				concseq.add_back(number);
+			}
+		}
 
-        int intlocation = pos / intsize;
-        int shiftamount = intsize - ((pos + 1) % intsize);
+		for (int i = 0; i < concseq.numberBases; ++i) {
+			std::cout << concseq.at(i);
+		}
 
-        if(shiftamount == intsize){
-            shiftamount = 0;
-        }
-        T tempnumber = 0;
+		return concseq;
+	}
 
-        object* temp = front;
-        for(int i = 0; i <= intlocation; ++i){
-            tempnumber = temp->number;
-            temp = temp->next;
-        }
+	LinkedList<T> slice(int start, int end) {
+		if (!isValidInput(start, end)) {
+			std::cout << "invalid parameters!" << std::endl;
+			LinkedList<T> error;
+			return error;
+		}
 
-        for(int i = 0; i < shiftamount; ++i){
-            tempnumber >>=2;
-        }
-        tempnumber &= 3;
+		LinkedList<T> temp(start, end);
 
-        if(tempnumber == 0){
-            return 'A';
-        }
-        else if(tempnumber == 1){
-            return 'T';
-        }
-        else if(tempnumber == 2){
-            return 'C';
-        }
-        else if(tempnumber == 3){
-            return 'G';
-        }
-        return ' ';
-    }
+		int counter = 0;
+		T number = 0;
+
+		for (int i = start; i < end; ++i) {
+			char base = at(i);
+			leftShift(number, base);
+			counter++;
+			if (counter % intsize == 0) {
+				temp.add_back(number);
+				number = 0;
+			}
+		}
+
+		while (counter % intsize != 0) {
+			number <<= 2;
+			counter++;
+			if (counter % intsize == 0) {
+				temp.add_back(number);
+			}
+		}
+		for (int i = 0; i < temp.numberBases; ++i) {
+			std::cout << temp.at(i);
+		}
+		return temp;
+	}
+
+	char at(int pos) {
+		if (pos >= numberBases || pos < 0) {
+			return ' ';
+		}
+
+		int intlocation = pos / intsize;
+		int shiftamount = intsize - ((pos + 1) % intsize);
+
+		if (shiftamount == intsize) {
+			shiftamount = 0;
+		}
+		T tempnumber = 0;
+
+		object* temp = front;
+		for (int i = 0; i <= intlocation; ++i) {
+			tempnumber = temp->number;
+			temp = temp->next;
+		}
+
+		for (int i = 0; i < shiftamount; ++i) {
+			tempnumber >>= 2;
+		}
+		tempnumber &= 3;
+
+		if (tempnumber == 0) {
+			return 'A';
+		}
+		else if (tempnumber == 1) {
+			return 'T';
+		}
+		else if (tempnumber == 2) {
+			return 'C';
+		}
+		else if (tempnumber == 3) {
+			return 'G';
+		}
+		return ' ';
+	}
 
 };

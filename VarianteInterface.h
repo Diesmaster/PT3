@@ -11,7 +11,7 @@ class VariantInterface {
 
 public:
 	virtual void read(string input) = 0;
-	virtual void write() = 0;
+	virtual void write(string output) = 0;
 	virtual string opdracht(int start, int einde, string optie, string seq = "") = 0;
 	virtual ~VariantInterface() {};
 

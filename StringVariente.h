@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <bitset>
+#include <fstream>
 #include "DNAstring.h"
 
 
@@ -13,7 +14,14 @@ public:
 		return;
 	}
 
-	void write() override {
+	void write(string output) override {
+		ofstream myfile;
+		myfile.open(output);
+		string result;
+		for (int x = 0; x < DNA->length(); x++) {
+			result = result + DNA->at(x);
+		}
+		myfile << result << '\n';
 		return;
 	}
 

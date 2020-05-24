@@ -38,6 +38,15 @@ bool startProgram(VariantInterface* ptr) {
 		}
 		
 		ptr->supplyVector(instructies);
+
+		cout << "wilt u de file wegschrijven naar een document? (ja/nee)" << endl;
+		cin >> antwoord;
+		string output;
+		if (antwoord == "ja") {
+			cout << "naar welke file?" << endl;
+			cin >> output;
+			ptr->write(output);
+		}
 	}else {
 		while (stop != true) {
 			int start, einde;

@@ -233,6 +233,9 @@ public:
 			freespace = 0;
 		}
 
+		if (freespace == intsize) {
+			freespace = 0;
+		}
 		if (freespace != 0) {
 			for (int i = 0; i < freespace; ++i) {
 				char base = seq.at(i);

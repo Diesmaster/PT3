@@ -7,7 +7,7 @@
 using namespace std;
 
 template<typename T>
-class LinkedListVariente: public VariantInterface {
+class LinkedListVariente : public VariantInterface {
 public:
 
 	LinkedListVariente() {
@@ -22,11 +22,11 @@ public:
 		DNA = new LinkedList<T>(input);
 		return;
 	}
-	
+
 	void write() override {
 		return;
 	}
-	
+
 	string opdracht(int start, int einde, string optie, string seq = "") override {
 		if (optie == ">") {
 			subtitutie(start, einde, seq);
@@ -61,7 +61,7 @@ private:
 			return "parameters are wrong, they will result in an array out of bound";
 		}
 		else if (start == 0) {
-			LinkedList<T> eerstedeel = DNA->slice(1, DNA->length() );
+			LinkedList<T> eerstedeel = DNA->slice(1, DNA->length());
 
 			LinkedList<T> sequence(seq, true);
 
@@ -101,7 +101,7 @@ private:
 
 		LinkedList<T> eerstedeel = DNA->slice(0, start);
 		LinkedList<T> tweededeel = DNA->slice(einde, DNA->length());
-		
+
 		LinkedList<T> total = eerstedeel.concat(tweededeel);
 
 		delete DNA;
@@ -128,13 +128,36 @@ private:
 		LinkedList<T> eerstedeel = DNA->slice(0, start);
 		LinkedList<T> tweededeel = DNA->slice(start, DNA->length());
 
+		bool supersain = false;
+		int pos;
+
+		if (seq.length() <= 2) {
+			seq = "TA" + seq;
+			supersain = true;
+			pos = start + 2;
+		}
+
 		LinkedList<T> sequence(seq, true);
 
 		LinkedList<T> stap1 = eerstedeel.concat(sequence);
-		LinkedList<T> total = stap1.concat(tweededeel);
+		LinkedList<T> stap2 = stap1.concat(tweededeel);
 
-		delete DNA;
-		DNA = new LinkedList<T>(total);
+		if (supersain == true) {
+			LinkedList<T> tussenstap1 = stap2.slice(0, start);
+			LinkedList<T> tussenstap2 = stap2.slice(pos, stap2.length());
+
+			LinkedList<T> total = tussenstap1.concat(tussenstap2);
+
+			delete DNA;
+			DNA = new LinkedList<T>(total);
+
+		}
+		else {
+			LinkedList<T> total = stap1.concat(stap2);
+
+			delete DNA;
+			DNA = new LinkedList<T>(total);
+		}
 
 		cout << "sub: " << DNA->length() << endl;
 		for (int x = 0; x < DNA->length(); x++) {
@@ -143,7 +166,7 @@ private:
 		cout << endl;
 
 		return "sucsess";
-	
+
 	}
 
 	string delitieIncertie(int start, int einde, string seq) override {
@@ -157,14 +180,37 @@ private:
 		LinkedList<T> eerstedeel = DNA->slice(0, start);
 		LinkedList<T> tweededeel = DNA->slice(einde, DNA->length());
 
+		bool supersain = false;
+		int pos;
+
+		if (seq.length() <= 2) {
+			seq = "TA" + seq;
+			supersain = true;
+			pos = start + 2;
+		}
+
 		LinkedList<T> sequence(seq, true);
 
 		LinkedList<T> stap1 = eerstedeel.concat(sequence);
-		LinkedList<T> total = stap1.concat(tweededeel);
+		LinkedList<T> stap2 = stap1.concat(tweededeel);
+
+	if(supersain == true ){
+		LinkedList<T> tussenstap1 = stap2.slice(0, start);
+		LinkedList<T> tussenstap2 = stap2.slice(pos, stap2.length());
+
+
+		LinkedList<T> total = tussenstap1.concat(tussenstap2);
 
 		delete DNA;
 		DNA = new LinkedList<T>(total);
 
+	}
+	else {
+		LinkedList<T> total = stap1.concat(stap2);
+
+		delete DNA;
+		DNA = new LinkedList<T>(total);
+	}
 		cout << "sub: " << DNA->length() << endl;
 		for (int x = 0; x < DNA->length(); x++) {
 			cout << DNA->at(x);
@@ -173,6 +219,7 @@ private:
 
 		return "sucsess";
 	}
+
 
 	string inversie(int start, int einde) override {
 		if (start == einde) {

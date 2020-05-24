@@ -1,21 +1,21 @@
 ﻿  PT2.cpp
-C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(101,11): warning C4018: '>': signed/unsigned mismatch
-C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message : while compiling class template member function 'LinkedList<T>::LinkedList(std::string,bool)'
-C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :         with
-C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :         [
-C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :             T=uint8_t
-C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(91): message :         ]
-C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(208): message : see reference to function template instantiation 'LinkedList<T>::LinkedList(std::string,bool)' being compiled
-C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(208): message :         with
-C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(208): message :         [
-C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(208): message :             T=uint8_t
-C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(208): message :         ]
-C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(181): message : see reference to class template instantiation 'LinkedList<T>' being compiled
-C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(181): message :         with
-C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(181): message :         [
-C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(181): message :             T=uint8_t
-C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(181): message :         ]
-C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(177): message : while compiling class template member function 'std::string LinkedListVariente<uint8_t>::inversie(int,int)'
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(112,11): warning C4018: '>': signed/unsigned mismatch
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(102): message : while compiling class template member function 'LinkedList<T>::LinkedList(std::string,bool)'
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(102): message :         with
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(102): message :         [
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(102): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\LinkedList.h(102): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(255): message : see reference to function template instantiation 'LinkedList<T>::LinkedList(std::string,bool)' being compiled
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(255): message :         with
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(255): message :         [
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(255): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(255): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(228): message : see reference to class template instantiation 'LinkedList<T>' being compiled
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(228): message :         with
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(228): message :         [
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(228): message :             T=uint8_t
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(228): message :         ]
+C:\Users\chris\source\repos\PT2\PT2\LinkedListVariente.h(224): message : while compiling class template member function 'std::string LinkedListVariente<uint8_t>::inversie(int,int)'
 C:\Users\chris\source\repos\PT2\PT2\PT2.cpp(89): message : see reference to class template instantiation 'LinkedListVariente<uint8_t>' being compiled
 C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(97,11): warning C4018: '>': signed/unsigned mismatch
 C:\Users\chris\source\repos\PT2\PT2\ArrayInt.h(87): message : while compiling class template member function 'void ArrayInt<T>::fillArrayString(std::string &)'

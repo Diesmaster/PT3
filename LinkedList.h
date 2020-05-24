@@ -44,7 +44,7 @@ class LinkedList {
 		listSize++;
 	}
 
-	void leftShift(T& number, char base) {
+	void leftShift(T& number, char base) const {
 		if (base == 'A') {
 			number <<= 2;
 		}
@@ -59,7 +59,7 @@ class LinkedList {
 		}
 	}
 
-	bool isValidInput(int start, int end) {
+	bool isValidInput(int start, int end) const {
 		if (start < 0 || start > numberBases || end < 0 || end > numberBases || end < start || start == end) {
 			return false;
 		}
@@ -70,14 +70,17 @@ class LinkedList {
 		numberBases = end - start;
 	}
 
-	LinkedList() {
-		numberBases = 0;
-	}
+	
 
 public:
 
 	object* front = nullptr;
 	object* end = nullptr;
+
+	LinkedList() {
+		numberBases = 0;
+	}
+
 
 	LinkedList(const LinkedList& other) {
 		numberBases = other.numberBases;
@@ -85,6 +88,14 @@ public:
 		while (help) {
 			add_back(help->number);
 			help = help->next;
+		}
+	}
+
+	~LinkedList() {
+		while (front) {
+			object* current = front;
+			front = front->next;
+			delete current;
 		}
 	}
 
@@ -138,11 +149,11 @@ public:
 		}
 	}
 
-	int length() {
+	int length() const {
 		return numberBases;
 	}
 
-	bool equal(const LinkedList<T> seq) {
+	bool equal(const LinkedList<T> seq) const {
 		if (seq.numberBases != numberBases) {
 			return false;
 		}
@@ -160,7 +171,7 @@ public:
 		return true;
 	}
 
-	LinkedList<T> concat(LinkedList<T> seq) {
+	LinkedList<T> concat(const LinkedList<T> &seq) const{
 		LinkedList<T> concseq;
 		concseq.numberBases = numberBases + seq.numberBases;
 
@@ -174,7 +185,7 @@ public:
 		T number = concseq.end->number;
 
 		int freespace = intsize - (numberBases % intsize);
-		std::cout << freespace;
+		
 
 		for (int i = 0; i < freespace; ++i) {
 			number >>= 2;
@@ -211,14 +222,10 @@ public:
 			}
 		}
 
-		for (int i = 0; i < concseq.numberBases; ++i) {
-			std::cout << concseq.at(i);
-		}
-
 		return concseq;
 	}
 
-	LinkedList<T> slice(int start, int end) {
+	LinkedList<T> slice(int start, int end) const {
 		if (!isValidInput(start, end)) {
 			std::cout << "invalid parameters!" << std::endl;
 			LinkedList<T> error;
@@ -247,13 +254,11 @@ public:
 				temp.add_back(number);
 			}
 		}
-		for (int i = 0; i < temp.numberBases; ++i) {
-			std::cout << temp.at(i);
-		}
+		
 		return temp;
 	}
 
-	char at(int pos) {
+	char at(int pos) const {
 		if (pos >= numberBases || pos < 0) {
 			return ' ';
 		}

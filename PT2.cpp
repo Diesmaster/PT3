@@ -65,6 +65,7 @@ int main() {
 			LinkedListVariente<uint8_t>* oeps = new LinkedListVariente<uint8_t>();
 			oeps->read(input);
 			startProgram(oeps);
+			delete oeps;
 		}
 		break;
 		case 16:
@@ -72,6 +73,7 @@ int main() {
 			LinkedListVariente<uint16_t>* oeps2 = new LinkedListVariente<uint16_t>();
 			oeps2->read(input);
 			startProgram(oeps2);
+			delete oeps2;
 		}
 		break;
 		case 32:
@@ -79,6 +81,7 @@ int main() {
 			LinkedListVariente<uint32_t>* oeps3 = new LinkedListVariente<uint32_t>();
 			oeps3->read(input);
 			startProgram(oeps3);
+			delete oeps3;
 		}
 		break;
 		}
@@ -90,6 +93,7 @@ int main() {
 			ArrayIntVariente<uint8_t>* oof1 = new  ArrayIntVariente<uint8_t>;
 			oof1->read(input);
 			startProgram(oof1);
+			delete oof1;
 		}
 		break;
 		case 16:
@@ -97,6 +101,7 @@ int main() {
 			ArrayIntVariente<uint16_t>* oof2 = new  ArrayIntVariente<uint16_t>;
 			oof2->read(input);
 			startProgram(oof2);
+			delete oof2;
 		}
 		break;
 		case 32:
@@ -104,6 +109,7 @@ int main() {
 			ArrayIntVariente<uint32_t>* oof3 = new  ArrayIntVariente<uint32_t>;
 			oof3->read(input);
 			startProgram(oof3);
+			delete oof3;
 		}
 		break;
 		}
